@@ -1,27 +1,19 @@
-from flask import Flask, jsonify
+from flask import Flask
 
+#create flask app
 app = Flask(__name__)
 
+#add all the routes
 
-ditiss_modules = ["Security concepts", "COSA", "ITIM & Devops" ,"NDC" ]
+@app.route("/", methods=["GET"])
+def root():
+    return "Welcome TO ITIL exam ..........."
 
-prn = "75782"
-name = "Mangesh Lasrekar"
-phone_number = "7276118292"
-
-@app.route('/')
-def welcome():
-    return "Welcome to ITIL!"
-
-@app.route('/modules')
-def get_modules():
-    return jsonify(ditiss_modules)
-
-@app.route('/info')
-def get_info():
-    info = f"PRN: {prn}, Name: {name}, Phone Number: {phone_number}"
-    return info
-
-if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=4000, debug=True)
-
+@app.route("/modules", methods=["GET"])
+def root1():
+    return "Security COncepts, FCN, COSA, DEVOPS, Compliance Audit, NDC, PKI, Cyber Forensics"
+@app.route("/me", methods=["GET"])
+def root2():
+    return "230344223025 Mangesh Lasrekar 7276118592"
+#run the application
+app.run(host="0.0.0.0", port=4000, debug=True)
